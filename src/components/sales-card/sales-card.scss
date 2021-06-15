@@ -1,0 +1,90 @@
+@import "../../variables.scss";
+.sales-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  background-color: $black;
+  .card-wrapper {
+    display: flex;
+  }
+  .card-img {
+    height: 80vh;
+    img {
+      width: 30vw;
+      height: 81vh;
+    }
+  }
+  .card-text {
+    margin-left: 4vw;
+    h1 {
+      font-size: 2.5vw;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    p {
+      margin-top: 4vh;
+      line-height: 4vh;
+      font-size: 1.1vw;
+      letter-spacing: 1px;
+    }
+    h2 {
+      display: flex;
+      flex-direction: column;
+      margin: 10vh 0;
+      span {
+        font-weight: 400;
+        text-decoration: line-through;
+        color: rgba(218, 218, 218, 0.849);
+        font-size: 1.7vw;
+      }
+      strong {
+        font-weight: 600;
+        font-size: 3vw;
+      }
+      i {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(218, 218, 218, 0.849);
+      }
+    }
+    .cta-btns {
+      margin-top: 10vh;
+      button {
+        transition: all 0.3s ease-out;
+        font-family: inherit;
+        font-size: 1.1vw;
+        font-weight: 700;
+        padding: 1.4vh 0;
+        width: 12vw;
+        border: 2px solid $white;
+        cursor: pointer;
+        &:active {
+          color: $black;
+          background-color: $white;
+          box-shadow: $drop-shadow;
+        }
+        @media (hover: hover) {
+          &:hover {
+            color: $black;
+            background-color: $white;
+            box-shadow: $drop-shadow;
+          }
+        }
+      }
+      .cta-cart {
+        background-color: $white;
+        color: $black;
+        margin-right: 2vw;
+      }
+      .cta-buy {
+        background: none;
+        color: $white;
+      }
+    }
+  }
+}

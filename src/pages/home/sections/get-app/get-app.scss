@@ -1,0 +1,55 @@
+.get-app {
+  margin: 20vh 0;
+  .wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .phone-img {
+    height: 85vh;
+    overflow: hidden;
+    img {
+      object-position: top;
+      object-fit: unset;
+      width: 30vw;
+      height: 250vh;
+    }
+  }
+  ul {
+    margin-left: 10vw;
+    list-style-type: circle;
+    font-weight: 600;
+    font-size: 1.4vw;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .app-play {
+    margin: 10vh 0;
+    h4 {
+      font-size: 2vw;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .stores {
+      margin-top: 5vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    img {
+      width: 20vw;
+      cursor: pointer;
+      &:active {
+        filter: invert(100%);
+      }
+      @media (hover: hover) {
+        &:hover {
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+}

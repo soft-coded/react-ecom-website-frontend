@@ -1,0 +1,41 @@
+.cart-card {
+  border-bottom: 2px solid grey;
+  padding-bottom: 5vh;
+  .card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      display: flex;
+      img {
+        width: 10vw;
+        height: 20vh;
+      }
+      .text {
+        margin-left: 2vw;
+        h2 {
+          margin-top: 2vh;
+          font-weight: 400;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      .quantity {
+        display: flex;
+        margin-right: 2vw;
+        gap: 1vw;
+        font-size: 1.5vw;
+        p {
+          display: flex;
+          align-items: center;
+        }
+        button {
+          font-size: 2vw;
+        }
+      }
+    }
+  }
+}

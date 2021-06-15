@@ -1,0 +1,9 @@
+.sales-section {
+  margin: 15vh 0;
+  .sales-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20vh;
+    position: relative;
+  }
+}

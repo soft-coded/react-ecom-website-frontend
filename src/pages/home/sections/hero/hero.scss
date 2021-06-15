@@ -1,0 +1,53 @@
+@import "../../../../variables.scss";
+.hero {
+  height: 100vh;
+  width: 100vw;
+  .inner {
+    pointer-events: none;
+  }
+}
+.hero-images {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  perspective: 1000px;
+}
+.hero-img {
+  overflow: hidden;
+  height: 80vh;
+  opacity: 0.5;
+  pointer-events: none;
+  img {
+    width: 25vw;
+    height: 80vh;
+  }
+}
+.hero-text {
+  position: absolute;
+  z-index: 13;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  h1 {
+    font-weight: 600;
+    font-size: 5vw;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px $black;
+  }
+  p {
+    font-size: 1.5vw;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px $black;
+    margin-top: 3vh;
+  }
+  .hero-btn {
+    margin-top: 6vh;
+  }
+}
