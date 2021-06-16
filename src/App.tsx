@@ -24,7 +24,12 @@ export default function App() {
         <Route
           render={({ location }) => (
             <TransitionGroup>
-              <CSSTransition classNames="page" timeout={400} key={location.key}>
+              <CSSTransition
+                classNames="page"
+                timeout={400}
+                key={location.key}
+                unmountOnExit
+              >
                 <Switch location={location}>
                   <Route exact path="/">
                     <Homepage />
