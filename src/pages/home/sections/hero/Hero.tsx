@@ -29,11 +29,10 @@ export default function Hero() {
   }, []);
 
   const imgTiltGyro = useCallback(e => {
-    const { alpha: rotation, beta: frontToBack, gamma: leftToRight } = e;
+    const { beta: frontToBack, gamma: leftToRight } = e;
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
         duration: 0.7,
-        x: -(rotation % 90) * 0.5,
         rotateX: -(frontToBack % 90) * 0.3,
         rotateY: (leftToRight % 90) * 0.5,
         ease: "power3.out"
