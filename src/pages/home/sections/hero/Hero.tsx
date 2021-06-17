@@ -33,13 +33,13 @@ export default function Hero() {
 
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
-    console.log(frontToBack, leftToRight);
     // freeze the image if it rotates too much
     if (prevLR >= 88 && !(leftToRight < 88 && leftToRight > 86))
       leftToRight = 89;
     else if (prevLR <= -88 && !(leftToRight > -88 && leftToRight < -86))
       leftToRight = -89;
     prevLR = leftToRight;
+    console.log(e.beta, frontToBack, e.gamma, leftToRight);
 
     // if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
     // else if (prevFB <= -175 && frontToBack !== -174) leftToRight = -179;
