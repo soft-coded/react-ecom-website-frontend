@@ -37,10 +37,10 @@ const fromOrientation = function (
 };
 
 const deg2rad = Math.PI / 180;
-let currentRotMat: mat3,
-  previousRotMat: mat3,
-  inverseMat: mat3,
-  relativeRotationDelta: mat3,
+let currentRotMat: any,
+  previousRotMat: any,
+  inverseMat: any,
+  relativeRotationDelta: any,
   totalRightAngularMovement = 0,
   totalTopAngularMovement = 0;
 
