@@ -30,29 +30,26 @@ export default function Hero() {
     });
   }, []);
 
-  const imgTiltGyro = useCallback(
-    e => {
-      let { beta: frontToBack, gamma: leftToRight } = e;
-      if (leftToRight > 75 || leftToRight < -75) frontToBack = 0;
-      if (frontToBack > 75 || frontToBack < -75) leftToRight = 0;
+  const imgTiltGyro = useCallback(e => {
+    let { beta: frontToBack, gamma: leftToRight } = e;
+    if (leftToRight > 75 || leftToRight < -75) frontToBack = 0;
+    if (frontToBack > 75 || frontToBack < -75) leftToRight = 0;
 
-      if (leftToRight > 87 && !(prevLR < 87 && prevLR > 85)) leftToRight = 89;
-      else if (leftToRight < -87 && !(prevLR > -87 && prevLR < -85))
-        leftToRight = -89;
-      prevLR = leftToRight;
-      console.log(e.beta, frontToBack, e.gamma, leftToRight);
+    if (leftToRight > 87 && !(prevLR < 87 && prevLR > 85)) leftToRight = 89;
+    else if (leftToRight < -87 && !(prevLR > -87 && prevLR < -85))
+      leftToRight = -89;
+    prevLR = leftToRight;
+    console.log(e.beta, frontToBack, e.gamma, leftToRight);
 
-      [imgLeftRef.current, imgRightRef.current].forEach(img =>
-        gsap.to(img, {
-          duration: 0.7,
-          rotationX: -frontToBack * 0.3,
-          rotationY: leftToRight * 0.3,
-          ease: "power3.out"
-        })
-      );
-    },
-    [prevLR]
-  );
+    [imgLeftRef.current, imgRightRef.current].forEach(img =>
+      gsap.to(img, {
+        duration: 0.7,
+        rotationX: -frontToBack * 0.3,
+        rotationY: leftToRight * 0.3,
+        ease: "power3.out"
+      })
+    );
+  }, []);
 
   const buttonAnimation = useCallback(() => {
     gsap.to(".hero-btn svg", {
