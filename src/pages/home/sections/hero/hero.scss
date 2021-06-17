@@ -14,7 +14,7 @@
   justify-content: space-around;
   perspective: 1000px;
   @media (max-width: $mobile-width-1) {
-    perspective: 1700px;
+    perspective: 10000px;
     height: 95%;
     margin-top: 5vh;
     flex-direction: column;
