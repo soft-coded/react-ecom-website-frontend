@@ -35,11 +35,10 @@ export default function Hero() {
     if (leftToRight > 75 || leftToRight < -75) frontToBack = 0;
     if (frontToBack > 75 || frontToBack < -75) leftToRight = 0;
 
-    if (leftToRight > 87 && !(prevLR < 87 && prevLR > 85)) leftToRight = 89;
-    else if (leftToRight < -87 && !(prevLR > -87 && prevLR < -85))
-      leftToRight = -89;
+    if (leftToRight < 0 && prevLR > 86) leftToRight = 89;
+    else if (leftToRight > 0 && prevLR < -86) leftToRight = -89;
     prevLR = leftToRight;
-    console.log(e.beta, frontToBack, e.gamma, leftToRight);
+    console.log(e.beta, frontToBack, e.gamma, leftToRight, prevLR);
 
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
