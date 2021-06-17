@@ -6,6 +6,9 @@ import imgLeft from "../../../../images/hero/hero1.jpg";
 import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
+let prevLR = 0,
+  prevFB = 0;
+
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const imgLeftRef = useRef<HTMLDivElement>(null);
@@ -30,6 +33,14 @@ export default function Hero() {
 
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
+    if (prevLR >= 85 && leftToRight <= -85) leftToRight = 89;
+    else if (prevLR <= -85 && leftToRight >= 85) leftToRight = -89;
+    prevLR = leftToRight;
+
+    if (prevFB >= 175 && frontToBack <= -175) frontToBack = 179;
+    else if (prevFB <= -175 && frontToBack >= 175) leftToRight = -179;
+    prevFB = frontToBack;
+
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
         duration: 0.7,
