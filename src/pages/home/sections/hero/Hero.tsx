@@ -38,7 +38,6 @@ export default function Hero() {
     if (leftToRight < 0 && prevLR > 86) leftToRight = 89;
     else if (leftToRight > 0 && prevLR < -86) leftToRight = -89;
     prevLR = leftToRight;
-    console.log(e.beta, frontToBack, e.gamma, leftToRight, prevLR);
 
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
