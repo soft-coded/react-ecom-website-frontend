@@ -32,8 +32,8 @@ export default function Hero() {
 
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
-    if (leftToRight > 75 || leftToRight < -75) frontToBack = 0;
-    if (frontToBack > 75 || frontToBack < -75) leftToRight = 0;
+    if (leftToRight > 60 || leftToRight < -60) frontToBack = 0;
+    if (frontToBack > 60 || frontToBack < -60) leftToRight = 0;
 
     if (leftToRight < 0 && prevLR > 86) leftToRight = 89;
     else if (leftToRight > 0 && prevLR < -86) leftToRight = -89;
