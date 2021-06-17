@@ -26,10 +26,17 @@
       background: $white;
       color: $black;
       border-radius: 50%;
+      @media (max-width: $mobile-width-1) {
+        width: 6vw;
+        height: 6vw;
+      }
     }
     .cart-span {
       display: inline-block;
       transform: translateX(100%);
+      @media (max-width: $mobile-width-1) {
+        transform: translateX(50%);
+      }
     }
     .logo {
       margin-right: auto;

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import "./sales-card.scss";
 import { useCart } from "../../contexts/CartContext";
+import Button from "../../components/button/Button";
+import vars from "../../variables";
 
 interface ItemType {
   item: {
@@ -21,6 +23,9 @@ function calculateDiscount(old$: number, new$: number) {
 }
 
 export default function SalesCard({ item, className }: ItemType) {
+  const isMobile = window.matchMedia(
+    "(max-width:" + vars.mobileWidth1 + ")"
+  ).matches;
   const { updateCart } = useCart()!;
   const addToCart = useCallback(() => {
     updateCart(cart => {
@@ -43,18 +48,21 @@ export default function SalesCard({ item, className }: ItemType) {
         </div>
         <div className="card-text">
           <h1>{item.title}</h1>
-          <p>{item.description}</p>
+          {!isMobile && <p>{item.description}</p>}
           <h2>
             <span>₹{item.oldPrice}</span>
             <strong>₹{item.newPrice}</strong>
             <i>{calculateDiscount(item.oldPrice, item.newPrice)}% off!</i>
+            {isMobile && <Button className="card-mob-btn" />}
           </h2>
-          <div className="cta-btns">
-            <button className="cta-cart" onClick={addToCart}>
-              ADD TO CART
-            </button>
-            <button className="cta-buy">BUY NOW</button>
-          </div>
+          {!isMobile && (
+            <div className="cta-btns">
+              <button className="cta-cart" onClick={addToCart}>
+                ADD TO CART
+              </button>
+              <button className="cta-buy">BUY NOW</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

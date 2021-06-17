@@ -1,6 +1,9 @@
 @import "../../../../variables.scss";
 .video-section {
   margin: 0 0 5vh;
+  @media (max-width: $mobile-width-1) {
+    margin: 0;
+  }
 }
 .video-img {
   overflow: hidden;
@@ -9,6 +12,10 @@
   img {
     width: 100%;
     height: 60vh;
+    @media (max-width: $mobile-width-1) {
+      width: 100vw;
+      height: 30vh;
+    }
   }
   .play-video-btn {
     transition: all 0.3s ease-out;
@@ -31,6 +38,10 @@
       &:hover {
         box-shadow: $drop-shadow;
       }
+    }
+    @media (max-width: $mobile-width-1) {
+      font-size: 4vw;
+      padding: 2vh 3vw;
     }
   }
 }

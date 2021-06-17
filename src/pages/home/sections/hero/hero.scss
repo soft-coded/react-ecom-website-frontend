@@ -13,15 +13,28 @@
   align-items: center;
   justify-content: space-around;
   perspective: 1000px;
+  @media (max-width: $mobile-width-1) {
+    margin-top: 5vh;
+    flex-direction: column;
+  }
 }
 .hero-img {
   overflow: hidden;
   height: 80vh;
   opacity: 0.5;
   pointer-events: none;
+  @media (max-width: $mobile-width-1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   img {
     width: 25vw;
     height: 80vh;
+    @media (max-width: $mobile-width-1) {
+      width: 60vw;
+      height: 43vh;
+    }
   }
 }
 .hero-text {
@@ -39,6 +52,10 @@
     font-size: 5vw;
     letter-spacing: 5px;
     text-shadow: 0 0 10px $black;
+    @media (max-width: $mobile-width-1) {
+      font-size: 10vw;
+      text-align: center;
+    }
   }
   p {
     font-size: 1.5vw;
@@ -46,6 +63,9 @@
     letter-spacing: 2px;
     text-shadow: 0 0 10px $black;
     margin-top: 3vh;
+    @media (max-width: $mobile-width-1) {
+      font-size: 4vw;
+    }
   }
   .hero-btn {
     margin-top: 6vh;

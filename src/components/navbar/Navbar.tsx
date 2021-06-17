@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./navbar.scss";
 import NavbarMenu from "./NavbarMenu";
 import { useCart } from "../../contexts/CartContext";
+import vars from "../../variables";
 
 export default function Navbar() {
   const menuButtonRef = useRef<HTMLLIElement>(null);
@@ -40,6 +41,9 @@ export default function Navbar() {
     });
   }, []);
   useEffect(() => {
+    const isMobile = window.matchMedia(
+      "(max-width:" + vars.mobileWidth1 + ")"
+    ).matches;
     const cartAnimTl = gsap.timeline({
       defaults: {
         duration: 0.7,
@@ -48,7 +52,7 @@ export default function Navbar() {
     });
     if (cart.length > 0) {
       cartAnimTl
-        .to(cartSpanRef.current, { xPercent: -100 })
+        .to(cartSpanRef.current, { xPercent: isMobile ? -60 : -100 })
         .to(cartNumRef.current, { autoAlpha: 1 });
     } else {
       cartAnimTl
