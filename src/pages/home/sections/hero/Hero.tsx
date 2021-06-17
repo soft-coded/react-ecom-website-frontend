@@ -29,7 +29,19 @@ export default function Hero() {
   }, []);
 
   const imgTiltGyro = useCallback(e => {
-    console.log(e);
+    const { alpha: rotation, beta: frontToBack, gamma: leftToRight } = e;
+    const xPos = rotation;
+    const yPos = rotation;
+    [imgLeftRef.current, imgRightRef.current].forEach(img =>
+      gsap.to(img, {
+        duration: 0.7,
+        x: xPos * 0.1,
+        y: yPos * 0.1,
+        rotateX: frontToBack * 0.1,
+        rotateY: leftToRight * 0.1,
+        ease: "power3.out"
+      })
+    );
   }, []);
 
   const buttonAnimation = useCallback(() => {
