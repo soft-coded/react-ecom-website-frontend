@@ -43,7 +43,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    heroRef.current?.addEventListener("deviceorientation", imgTiltGyro);
+    window.addEventListener("deviceorientation", imgTiltGyro);
     heroRef.current?.addEventListener("mousemove", imgTilt);
     buttonAnimation();
   }, [imgTilt, buttonAnimation, imgTiltGyro]);
