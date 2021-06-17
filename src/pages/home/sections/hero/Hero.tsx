@@ -33,23 +33,23 @@ export default function Hero() {
 
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
-    if (prevLR >= 85 && leftToRight !== 84) leftToRight = 89;
-    else if (prevLR <= -85 && leftToRight !== -84) leftToRight = -89;
-    prevLR = leftToRight;
+    console.log(frontToBack, leftToRight);
+    // if (prevLR >= 85 && leftToRight !== 84) leftToRight = 89;
+    // else if (prevLR <= -85 && leftToRight !== -84) leftToRight = -89;
+    // prevLR = leftToRight;
 
-    if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
-    else if (prevFB <= -175 && frontToBack !== -174) leftToRight = -179;
-    prevFB = frontToBack;
-    console.log(e.beta, frontToBack, e.gamma, leftToRight);
+    // if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
+    // else if (prevFB <= -175 && frontToBack !== -174) leftToRight = -179;
+    // prevFB = frontToBack;
 
-    [imgLeftRef.current, imgRightRef.current].forEach(img =>
-      gsap.to(img, {
-        duration: 0.7,
-        rotationX: -(frontToBack % 90) * 0.35,
-        rotationY: leftToRight * 0.35,
-        ease: "power3.out"
-      })
-    );
+    // [imgLeftRef.current, imgRightRef.current].forEach(img =>
+    //   gsap.to(img, {
+    //     duration: 0.7,
+    //     rotationX: -(frontToBack % 90) * 0.35,
+    //     rotationY: leftToRight * 0.35,
+    //     ease: "power3.out"
+    //   })
+    // );
   }, []);
 
   const buttonAnimation = useCallback(() => {
