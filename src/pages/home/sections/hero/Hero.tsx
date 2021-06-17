@@ -6,7 +6,7 @@ import imgLeft from "../../../../images/hero/hero1.jpg";
 import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
-let prevLR = 0;
+// let prevLR = 0;
 // let  prevFB = 0;
 
 export default function Hero() {
@@ -34,11 +34,11 @@ export default function Hero() {
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
     // freeze the image if it rotates too much
-    if (prevLR >= 88 && !(leftToRight < 88 && leftToRight > 86))
-      leftToRight = 89;
-    else if (prevLR <= -88 && !(leftToRight > -88 && leftToRight < -86))
-      leftToRight = -89;
-    prevLR = leftToRight;
+    // if (prevLR >= 88 && !(leftToRight < 88 && leftToRight > 86))
+    //   leftToRight = 89;
+    // else if (prevLR <= -88 && !(leftToRight > -88 && leftToRight < -86))
+    //   leftToRight = -89;
+    // prevLR = leftToRight;
     console.log(e.beta, frontToBack, e.gamma, leftToRight);
 
     // if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
