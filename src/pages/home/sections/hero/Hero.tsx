@@ -48,8 +48,8 @@ export default function Hero() {
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
         duration: 0.7,
-        rotationX: -frontToBack * 0.35,
-        rotationY: leftToRight * 0.45,
+        rotationX: -frontToBack * 0.1,
+        rotationY: leftToRight * 0.1,
         ease: "power3.out"
       })
     );
