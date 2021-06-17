@@ -6,8 +6,8 @@ import imgLeft from "../../../../images/hero/hero1.jpg";
 import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
-// let prevLR = 0,
-//   prevFB = 0;
+let prevLR = 0;
+// let  prevFB = 0;
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -34,22 +34,25 @@ export default function Hero() {
   const imgTiltGyro = useCallback(e => {
     let { beta: frontToBack, gamma: leftToRight } = e;
     console.log(frontToBack, leftToRight);
-    // if (prevLR >= 85 && leftToRight !== 84) leftToRight = 89;
-    // else if (prevLR <= -85 && leftToRight !== -84) leftToRight = -89;
-    // prevLR = leftToRight;
+    // freeze the image if it rotates too much
+    if (prevLR >= 88 && !(leftToRight < 88 && leftToRight > 86))
+      leftToRight = 89;
+    else if (prevLR <= -88 && !(leftToRight > -88 && leftToRight < -86))
+      leftToRight = -89;
+    prevLR = leftToRight;
 
     // if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
     // else if (prevFB <= -175 && frontToBack !== -174) leftToRight = -179;
     // prevFB = frontToBack;
 
-    // [imgLeftRef.current, imgRightRef.current].forEach(img =>
-    //   gsap.to(img, {
-    //     duration: 0.7,
-    //     rotationX: -(frontToBack % 90) * 0.35,
-    //     rotationY: leftToRight * 0.35,
-    //     ease: "power3.out"
-    //   })
-    // );
+    [imgLeftRef.current, imgRightRef.current].forEach(img =>
+      gsap.to(img, {
+        duration: 0.7,
+        rotationX: -frontToBack * 0.35,
+        rotationY: leftToRight * 0.45,
+        ease: "power3.out"
+      })
+    );
   }, []);
 
   const buttonAnimation = useCallback(() => {
