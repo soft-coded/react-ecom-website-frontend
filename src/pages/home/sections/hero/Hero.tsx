@@ -6,8 +6,8 @@ import imgLeft from "../../../../images/hero/hero1.jpg";
 import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
-let prevLR = 0,
-  prevFB = 0;
+// let prevLR = 0,
+//   prevFB = 0;
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
