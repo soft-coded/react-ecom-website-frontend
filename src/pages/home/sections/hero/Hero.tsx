@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
 
 import "./hero.scss";
@@ -10,6 +10,8 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const imgLeftRef = useRef<HTMLDivElement>(null);
   const imgRightRef = useRef<HTMLDivElement>(null);
+  const [prevLR, setPrevLR] = useState(0);
+  const [prevFB, setPrevFB] = useState(0);
 
   const imgTilt = useCallback(e => {
     const { offsetX, offsetY, target } = e;
@@ -29,7 +31,15 @@ export default function Hero() {
   }, []);
 
   const imgTiltGyro = useCallback(e => {
-    const { beta: frontToBack, gamma: leftToRight } = e;
+    let { beta: frontToBack, gamma: leftToRight } = e;
+    if (prevFB >= 175 && frontToBack <= -175) frontToBack = 179;
+    else if (prevFB <= -175 && frontToBack >= 175) frontToBack = -179;
+    setPrevFB(frontToBack);
+
+    if (prevLR >= 85 && leftToRight <= -85) leftToRight = 89;
+    else if (prevLR <= -85 && leftToRight >= 85) leftToRight = -89;
+    setPrevLR(leftToRight);
+
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
         duration: 0.7,
