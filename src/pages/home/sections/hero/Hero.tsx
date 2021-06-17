@@ -40,6 +40,7 @@ export default function Hero() {
     if (prevFB >= 175 && frontToBack !== 174) frontToBack = 179;
     else if (prevFB <= -175 && frontToBack !== -174) leftToRight = -179;
     prevFB = frontToBack;
+    console.log(e.beta, frontToBack, e.gamma, leftToRight);
 
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
