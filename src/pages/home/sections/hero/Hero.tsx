@@ -28,6 +28,10 @@ export default function Hero() {
     });
   }, []);
 
+  const imgTiltGyro = useCallback(e => {
+    console.log(e);
+  }, []);
+
   const buttonAnimation = useCallback(() => {
     gsap.to(".hero-btn svg", {
       y: 10,
@@ -39,9 +43,10 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    heroRef.current?.addEventListener("deviceorientation", imgTiltGyro);
     heroRef.current?.addEventListener("mousemove", imgTilt);
     buttonAnimation();
-  }, [imgTilt, buttonAnimation]);
+  }, [imgTilt, buttonAnimation, imgTiltGyro]);
 
   return (
     <section className="hero" ref={heroRef}>
