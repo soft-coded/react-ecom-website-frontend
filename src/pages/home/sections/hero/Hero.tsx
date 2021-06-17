@@ -31,7 +31,6 @@ export default function Hero() {
   const imgTiltGyro = useCallback(e => {
     const { alpha: rotation, beta: frontToBack, gamma: leftToRight } = e;
     const xPos = rotation;
-    const yPos = rotation;
     [imgLeftRef.current, imgRightRef.current].forEach(img =>
       gsap.to(img, {
         duration: 0.7,
