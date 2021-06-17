@@ -1,48 +1,10 @@
 import { useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
-import { mat3 } from "gl-matrix";
 
 import "./hero.scss";
 import imgLeft from "../../../../images/hero/hero1.jpg";
 import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
-
-const fromOrientation = function (
-  out: mat3,
-  alpha: number,
-  beta: number,
-  gamma: number
-) {
-  let cX, cY, cZ, sX, sY, sZ;
-  let _z = alpha;
-  let _x = beta;
-  let _y = gamma;
-
-  cX = Math.cos(_x);
-  cY = Math.cos(_y);
-  cZ = Math.cos(_z);
-  sX = Math.sin(_x);
-  sY = Math.sin(_y);
-  sZ = Math.sin(_z);
-
-  out[0] = cZ * cY + sZ * sX * sY;
-  out[1] = cX * sZ;
-  out[2] = -cZ * sY + sZ * sX * cY;
-  out[3] = -cY * sZ + cZ * sX * sY;
-  out[4] = cZ * cX;
-  out[5] = sZ * sY + cZ * cY * sX;
-  out[6] = cX * sY;
-  out[7] = -sX;
-  out[8] = cX * cY;
-};
-
-const deg2rad = Math.PI / 180;
-let currentRotMat: any,
-  previousRotMat: any,
-  inverseMat: any,
-  relativeRotationDelta: any,
-  totalRightAngularMovement = 0,
-  totalTopAngularMovement = 0;
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -67,43 +29,15 @@ export default function Hero() {
   }, []);
 
   const imgTiltGyro = useCallback(e => {
-    // let { beta: frontToBack, gamma: leftToRight } = e;
-    let { alpha, beta, gamma } = e;
-    if (!previousRotMat) {
-      previousRotMat = mat3.create();
-      currentRotMat = mat3.create();
-      relativeRotationDelta = mat3.create();
-
-      fromOrientation(
-        currentRotMat,
-        alpha * deg2rad,
-        beta * deg2rad,
-        gamma * deg2rad
-      );
-    }
-    mat3.copy(previousRotMat, currentRotMat);
-    fromOrientation(
-      currentRotMat,
-      alpha * deg2rad,
-      beta * deg2rad,
-      gamma * deg2rad
+    let { beta: frontToBack, gamma: leftToRight } = e;
+    [imgLeftRef.current, imgRightRef.current].forEach(img =>
+      gsap.to(img, {
+        duration: 0.7,
+        rotationX: -(frontToBack % 90) * 0.35,
+        rotationY: leftToRight * 0.35,
+        ease: "power3.out"
+      })
     );
-    mat3.transpose(inverseMat, previousRotMat); // for rotation matrix, inverse is transpose
-    mat3.multiply(relativeRotationDelta, currentRotMat, inverseMat);
-
-    // add the angular deltas to the cummulative rotation
-    totalRightAngularMovement += Math.asin(relativeRotationDelta[6]) / deg2rad;
-    totalTopAngularMovement += Math.asin(relativeRotationDelta[7]) / deg2rad;
-    console.log(totalRightAngularMovement, totalTopAngularMovement);
-
-    // [imgLeftRef.current, imgRightRef.current].forEach(img =>
-    //   gsap.to(img, {
-    //     duration: 0.7,
-    //     rotationX: -(frontToBack % 90) * 0.35,
-    //     rotationY: leftToRight * 0.35,
-    //     ease: "power3.out"
-    //   })
-    // );
   }, []);
 
   const buttonAnimation = useCallback(() => {
