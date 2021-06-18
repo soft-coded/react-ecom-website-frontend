@@ -16,6 +16,9 @@
     h1 {
       font-weight: 400;
       font-size: 1.3vw;
+      @media (max-width: $mobile-width-1) {
+        font-size: 6vw;
+      }
     }
     h2 {
       letter-spacing: 1px;
@@ -38,6 +41,11 @@
       &:hover {
         box-shadow: $drop-shadow;
       }
+    }
+    @media (max-width: $mobile-width-1) {
+      font-size: 4vw;
+      padding: 2vh 4vw;
+      align-self: center;
     }
   }
   .no-items {

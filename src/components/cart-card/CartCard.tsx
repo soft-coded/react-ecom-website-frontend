@@ -2,6 +2,7 @@ import { useCallback } from "react";
 
 import "./cart-card.scss";
 import { useCart } from "../../contexts/CartContext";
+import vars from "../../variables";
 
 interface DataType {
   id: number;
@@ -14,6 +15,9 @@ interface DataType {
 }
 
 export default function CartCard({ item }: { item: DataType }) {
+  const isMobile = window.matchMedia(
+    "(max-width:" + vars.mobileWidth1 + ")"
+  ).matches;
   const { updateCart } = useCart()!;
   const changeQuantity = useCallback(
     (increase: boolean) => {
@@ -44,9 +48,11 @@ export default function CartCard({ item }: { item: DataType }) {
     <div className="cart-card">
       <div className="card-wrapper">
         <div className="left">
-          <div className="img-container">
-            <img src={item.image} alt={item.title} />
-          </div>
+          {!isMobile && (
+            <div className="img-container">
+              <img src={item.image} alt={item.title} />
+            </div>
+          )}
           <div className="text">
             <h1>{item.title}</h1>
             <h2>₹{item.newPrice * item.quantity}</h2>

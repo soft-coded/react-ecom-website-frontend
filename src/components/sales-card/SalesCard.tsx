@@ -16,16 +16,17 @@ interface ItemType {
     newPrice: number;
   };
   className?: string;
+  isItem?: boolean;
 }
 
 function calculateDiscount(old$: number, new$: number) {
   return Math.ceil(((old$ - new$) / old$) * 100);
 }
 
-export default function SalesCard({ item, className }: ItemType) {
-  const isMobile = window.matchMedia(
-    "(max-width:" + vars.mobileWidth1 + ")"
-  ).matches;
+export default function SalesCard({ item, className, isItem }: ItemType) {
+  const isMobile =
+    window.matchMedia("(max-width:" + vars.mobileWidth1 + ")").matches &&
+    !isItem;
   const { updateCart } = useCart()!;
   const addToCart = useCallback(() => {
     updateCart(cart => {

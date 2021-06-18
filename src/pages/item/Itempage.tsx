@@ -18,7 +18,7 @@ export default function Itempage() {
   return item ? (
     <main className="item-page">
       <div className="inner">
-        <Card item={item} className="card" />
+        <Card item={item} className="card" isItem={true} />
       </div>
     </main>
   ) : (
