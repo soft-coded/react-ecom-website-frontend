@@ -1,4 +1,4 @@
 //eslint-disable-next-line
 export default {
-  mobileWidth1: "500px"
+  mobileWidth1: "600px"
 };
