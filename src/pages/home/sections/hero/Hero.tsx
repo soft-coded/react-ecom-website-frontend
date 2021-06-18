@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
 
 import "./hero.scss";
@@ -7,12 +7,14 @@ import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
 let prevLR = 0;
-let isSafari = typeof DeviceOrientationEvent.requestPermission === "function";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const imgLeftRef = useRef<HTMLDivElement>(null);
   const imgRightRef = useRef<HTMLDivElement>(null);
+  const [isSafari, setIsSafari] = useState(
+    typeof DeviceOrientationEvent.requestPermission === "function"
+  );
 
   const imgTilt = useCallback(e => {
     const { offsetX, offsetY, target } = e;
@@ -69,7 +71,7 @@ export default function Hero() {
       })
       .catch(err => alert(err))
       .finally(() => {
-        isSafari = false;
+        setIsSafari(false);
       });
   }, [imgTiltGyro]);
 
