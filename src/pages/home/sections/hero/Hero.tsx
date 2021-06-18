@@ -60,7 +60,15 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("deviceorientation", imgTiltGyro);
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission()
+        .then(res => {
+          if (res === "granted") {
+            window.addEventListener("deviceorientation", imgTiltGyro);
+          } else alert("Please give us the gyroscope permission 😭");
+        })
+        .catch(err => alert(err));
+    } else window.addEventListener("deviceorientation", imgTiltGyro);
     heroRef.current?.addEventListener("mousemove", imgTilt);
     buttonAnimation();
   }, [imgTilt, buttonAnimation, imgTiltGyro]);
