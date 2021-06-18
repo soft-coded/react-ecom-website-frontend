@@ -7,6 +7,7 @@ import imgRight from "../../../../images/hero/hero2.jpg";
 import Button from "../../../../components/button/Button";
 
 let prevLR = 0;
+let isSafari = typeof DeviceOrientationEvent.requestPermission === "function";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -59,16 +60,21 @@ export default function Hero() {
     });
   }, []);
 
+  const safariGyro = useCallback(() => {
+    DeviceOrientationEvent.requestPermission()
+      .then(res => {
+        if (res === "granted") {
+          window.addEventListener("deviceorientation", imgTiltGyro);
+        } else alert("Wow you lied 😒");
+      })
+      .catch(err => alert(err))
+      .finally(() => {
+        isSafari = false;
+      });
+  }, [imgTiltGyro]);
+
   useEffect(() => {
-    if (typeof DeviceOrientationEvent.requestPermission === "function") {
-      DeviceOrientationEvent.requestPermission()
-        .then(res => {
-          if (res === "granted") {
-            window.addEventListener("deviceorientation", imgTiltGyro);
-          } else alert("Please give us the gyroscope permission 😭");
-        })
-        .catch(err => alert(err));
-    } else window.addEventListener("deviceorientation", imgTiltGyro);
+    window.addEventListener("deviceorientation", imgTiltGyro);
     heroRef.current?.addEventListener("mousemove", imgTilt);
     buttonAnimation();
   }, [imgTilt, buttonAnimation, imgTiltGyro]);
@@ -88,7 +94,13 @@ export default function Hero() {
           <h1>NEW SPORTS</h1>
           <h1>COLLECTION</h1>
           <p>For the fitness freak in you</p>
-          <Button className="hero-btn" />
+          {isSafari ? (
+            <button className="gyro-btn" onClick={safariGyro}>
+              ENABLE GYROSCOPE
+            </button>
+          ) : (
+            <Button className="hero-btn" />
+          )}
         </div>
       </div>
     </section>

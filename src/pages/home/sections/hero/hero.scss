@@ -73,4 +73,12 @@
   .hero-btn {
     margin-top: 6vh;
   }
+  .gyro-btn {
+    margin-top: 3vh;
+    pointer-events: auto;
+    background: $white;
+    color: $black;
+    padding: 1vh 2vw;
+    font-weight: 600;
+  }
 }
