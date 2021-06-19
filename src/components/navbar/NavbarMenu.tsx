@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./navbar.scss";
 
 export default function NavMenu() {
@@ -6,7 +8,9 @@ export default function NavMenu() {
       <div className="inner">
         <ul>
           <li>
-            <h1>ACCOUNT</h1>
+            <Link to="/login">
+              <h1>LOG IN</h1>
+            </Link>
           </li>
           <li>
             <h1>ORDERS</h1>

@@ -1,0 +1,78 @@
+@import "../../variables.scss";
+.log-in-section {
+  height: 100vh;
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper {
+    display: flex;
+    gap: 5vw;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    padding-right: 4.9vw;
+    border-right: 2px solid $white;
+    h1 {
+      font-size: 4vw;
+    }
+    button {
+      font-size: 1.2vw;
+      font-weight: 600;
+      background-color: #e94235;
+      padding: 2vh 2vw;
+    }
+    .amazon {
+      background-color: #ed9618;
+    }
+    .facebook {
+      background-color: #4867aa;
+    }
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5vh;
+    padding: 10vh 3vw;
+    width: 34vw;
+    background: $white;
+    color: $black;
+    .form-group {
+      width: 100%;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 1.2vw;
+    }
+    input {
+      background: $grey;
+      border: none;
+      margin-top: 2vh;
+      height: 7vh;
+      width: 100%;
+      font-size: 1.6vw;
+      padding: 0 1vw;
+    }
+    button {
+      background: $black;
+      color: $white;
+      padding: 2vh 2vw;
+      align-self: stretch;
+      font-size: 1.5vw;
+      font-weight: 600;
+      margin-top: 2vh;
+      transition: all 0.3s ease-out;
+      &:hover {
+        box-shadow: $drop-shadow;
+      }
+    }
+    p {
+      font-size: 1.3vw;
+    }
+  }
+}

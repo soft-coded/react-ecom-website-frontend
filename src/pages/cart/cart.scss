@@ -34,13 +34,8 @@
     font-size: 1.1vw;
     font-weight: 700;
     padding: 2.3vh 1.7vw;
-    &:active {
+    &:hover {
       box-shadow: $drop-shadow;
-    }
-    @media (hover: hover) {
-      &:hover {
-        box-shadow: $drop-shadow;
-      }
     }
     @media (max-width: $mobile-width-1) {
       font-size: 4vw;
