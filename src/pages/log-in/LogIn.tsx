@@ -1,5 +1,5 @@
 import { useRef, BaseSyntheticEvent } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import "./log-in.scss";
 import { useAuth } from "../../contexts/AuthContext";
@@ -9,7 +9,7 @@ export default function LogIn() {
   const history = useHistory();
   const { isAuthed } = useAuth()!;
   if (isAuthed) {
-    history.goBack();
+    history.push("/");
     return null;
   }
   function handleSubmit(e: BaseSyntheticEvent) {
@@ -22,9 +22,11 @@ export default function LogIn() {
         <div className="wrapper">
           <div className="left">
             <h1>LOG IN</h1>
-            <button>with Google</button>
-            <button className="amazon">with Amazon</button>
-            <button className="facebook">with Facebook</button>
+            <div className="buttons">
+              <button className="google">with Google</button>
+              <button className="amazon">with Amazon</button>
+              <button className="facebook">with Facebook</button>
+            </div>
           </div>
           <form className="right">
             <div className="form-group">
@@ -42,7 +44,7 @@ export default function LogIn() {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
                 required
@@ -52,7 +54,10 @@ export default function LogIn() {
             <button type="submit" onClick={handleSubmit}>
               LOG IN
             </button>
-            <p>No account? Create one here.</p>
+            <p>
+              No account?&nbsp;
+              <Link to="/signup">Create one here.</Link>
+            </p>
           </form>
         </div>
       </div>

@@ -1,10 +1,10 @@
 @import "../../variables.scss";
-.log-in-section {
+.sign-up-section {
   height: 100vh;
   @media (max-width: $mobile-width-1) {
     height: unset;
     min-height: 100vh;
-    margin-top: 10vh;
+    margin: 10vh 0;
   }
   .inner {
     display: flex;
@@ -13,22 +13,27 @@
   }
   .wrapper {
     display: flex;
-    gap: 5vw;
+    gap: 3vw;
     @media (max-width: $mobile-width-1) {
       flex-direction: column;
-      width: 100%;
     }
   }
   .left {
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    padding-right: 4.9vw;
+    padding-right: 2.9vw;
     border-right: 2px solid $white;
     @media (max-width: $mobile-width-1) {
       border: none;
       border-bottom: 2px solid $white;
       padding: 0 0 3vh;
+    }
+    h1 {
+      font-size: 3vw;
+      @media (max-width: $mobile-width-1) {
+        font-size: 10vw;
+      }
     }
     .buttons {
       display: flex;
@@ -36,54 +41,51 @@
       gap: 5vh;
       @media (max-width: $mobile-width-1) {
         flex-direction: row;
-        justify-content: space-between;
         gap: 3vw;
       }
-    }
-    h1 {
-      font-size: 4vw;
-      @media (max-width: $mobile-width-1) {
-        font-size: 10vw;
-      }
-    }
-    button {
-      font-size: 1.2vw;
-      font-weight: 600;
-      padding: 2vh 2vw;
-      @media (max-width: $mobile-width-1) {
-        font-size: 3vw;
-        width: 100%;
+      button {
+        font-size: 1.2vw;
+        font-weight: 600;
+        padding: 2vh 2vw;
+        @media (max-width: $mobile-width-1) {
+          font-size: 3vw;
+          width: 100%;
+        }
       }
     }
   }
   .right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 5vh;
-    padding: 10vh 3vw;
-    width: 34vw;
-    background: $white;
+    padding: 6vh 3vw;
+    background-color: $white;
     color: $black;
-    @media (max-width: $mobile-width-1) {
-      width: 100%;
-      padding: 4vh 6vw;
-    }
     .form-group {
-      width: 100%;
-    }
-    label {
-      display: block;
-      font-weight: 600;
-      font-size: 1.2vw;
-      @media (max-width: $mobile-width-1) {
-        font-size: 3vw;
+      display: flex;
+      gap: 2vw;
+      .form-control {
+        position: relative;
+        width: 100%;
+      }
+      label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1vw;
+        font-weight: 600;
+        font-size: 1.25vw;
+        color: $black + bd;
+        pointer-events: none;
+        @media (max-width: $mobile-width-1) {
+          font-size: 3.5vw;
+          left: 2vw;
+        }
       }
     }
     input {
       background: $grey;
       border: none;
-      margin-top: 2vh;
       height: 7vh;
       width: 100%;
       font-size: 1.6vw;
@@ -105,6 +107,10 @@
       &:hover {
         box-shadow: $drop-shadow;
       }
+      &:disabled {
+        opacity: 0.6;
+        pointer-events: none;
+      }
       @media (max-width: $mobile-width-1) {
         font-size: 3vw;
       }
@@ -119,13 +125,4 @@
       }
     }
   }
-}
-.google {
-  background-color: #e94235 !important;
-}
-.amazon {
-  background-color: #ed9618 !important;
-}
-.facebook {
-  background-color: #4867aa !important;
 }

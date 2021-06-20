@@ -10,6 +10,7 @@ import Homepage from "./pages/home/Homepage";
 import ItemPage from "./pages/item/Itempage";
 import CartPage from "./pages/cart/Cart";
 import LogInPage from "./pages/log-in/LogIn";
+import SignUpPage from "./pages/sign-up/SignUp";
 
 export default function App() {
   useEffect(() => {
@@ -45,6 +46,9 @@ export default function App() {
                     </Route>
                     <Route path="/login">
                       <LogInPage />
+                    </Route>
+                    <Route path="/signup">
+                      <SignUpPage />
                     </Route>
                   </Switch>
                 </CSSTransition>
